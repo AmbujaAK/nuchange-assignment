@@ -36,6 +36,6 @@ public class ApiController {
     @GetMapping("/list")
     public ResponseEntity<List<Store>> getList(@RequestParam(value = "page") int page,
                                                @RequestParam(value = "size") int size) {
-        return this.apiService.getCount(page, size);
+        return this.apiService.getList(page, size);
     }
 }

@@ -33,7 +33,7 @@ public class ApiServiceImpl implements  ApiService {
         }
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     @Override
     public ResponseEntity<Store> getUrl(String url) {
         for (Store st : localStorage) {
@@ -46,11 +46,34 @@ public class ApiServiceImpl implements  ApiService {
 
     @Override
     public ResponseEntity<Integer> getCount(String url) {
-        return null;
+
+        for (Store st : localStorage) {
+            if (st.getKey().equals(url)) {
+                return new ResponseEntity<Integer>(st.getCount(), HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<Integer>(0, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<Store>> getCount(int page, int size) {
-        return null;
+    public ResponseEntity<List<Store>> getList(int page, int size) {
+
+        List<Store> data = new ArrayList<Store>();
+
+        int start = size * (page -1);
+        int end = size * page;
+        // return empty data if start > end	or
+        if( start < 0 || end <= 0 || start >= end)
+            return new ResponseEntity<List<Store>>(data, HttpStatus.OK);
+
+        // return empty if start or end is greater than size of local storage current list
+        for(int i=start; i<end; i++) {
+            if(start > localStorage.size())
+                break;
+            if(i < localStorage.size())
+                data.add(localStorage.get(i));
+        }
+        return new ResponseEntity<List<Store>>(data, HttpStatus.OK);
+
     }
 }

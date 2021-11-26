@@ -14,5 +14,5 @@ public interface ApiService {
 
     public ResponseEntity<Integer> getCount(String url);
 
-    public ResponseEntity<List<Store>> getCount(int page, int size);
+    public ResponseEntity<List<Store>> getList(int page, int size);
 }
