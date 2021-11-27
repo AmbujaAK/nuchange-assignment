@@ -1,0 +1,17 @@
+* Architecture of the project
+
+1. This project has been created in Spring Boot
+2. It contains couple of folder as package like controller,service,model,util
+    * Controller - 
+        Classes in controller folder contains info about end point of all the APIs
+        It is the starting point of contact with API. It can be envoked from UI or postman.
+    * Service -
+        Classes in service folder are specially to write Business logic of API.
+    * Model -
+        In this folder, we create classes for Object which store data and API play with it.
+    * Util -
+        In this folder, Utility classes are created.
+        Logic for Encryption and decryption is created inside Helper class.
+
+2. This project also contains unit testing.
+    * Same folder structure has been followed like above.
